@@ -6,21 +6,25 @@ import axios from "axios";
  * @returns User data
  */
 async function getData(id) {
-  // fetch user data using axios
-  const { data: user } = await axios(
-    `https://jsonplaceholder.typicode.com/users/${id}`
-  );
+  try {
+    // fetch user data using axios
+    const { data: user } = await axios(
+      `https://jsonplaceholder.typicode.com/users/${id}`
+    );
 
-  // fetch post data using axios
-  const { data: posts } = await axios(
-    `https://jsonplaceholder.typicode.com/posts?userId=${id}`
-  );
+    // fetch post data using axios
+    const { data: posts } = await axios(
+      `https://jsonplaceholder.typicode.com/posts?userId=${id}`
+    );
 
-  // add posts data to user data
-  user.posts = posts;
+    // add posts data to user data
+    user.posts = posts;
 
-  // return user data
-  return user;
+    // return user data
+    return user;
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 // export getData function
