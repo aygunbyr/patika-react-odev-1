@@ -17,11 +17,8 @@ async function getData(id) {
       `https://jsonplaceholder.typicode.com/posts?userId=${id}`
     );
 
-    // add posts data to user data
-    user.posts = posts;
-
-    // return user data
-    return user;
+    // return user data merged with posts
+    return { ...user, posts };
   } catch (error) {
     console.log(error);
   }
